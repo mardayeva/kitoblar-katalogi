@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ book.title }}</title>
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--text:#0b1220;--muted:#6b7280;--border:#e6eaf2;--radius:18px;--shadow:0 18px 45px rgba(15,23,42,.08);--accent:#2563eb;}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,#fff,var(--bg));color:var(--text)}
+    .wrap{max-width:940px;margin:0 auto;padding:22px 16px 64px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted);line-height:1.7}
+    .meta{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;margin-top:12px}
+    .box{grid-column:span 6;border:1px solid var(--border);border-radius:14px;padding:12px;background:#fff}
+    .k{font-size:12px;color:var(--muted);margin:0 0 4px}
+    .v{margin:0;font-weight:700}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    a.btn{display:inline-block;text-decoration:none;font-weight:800;font-size:13px;padding:10px 14px;border-radius:14px;border:1px solid var(--border)}
+    a.primary{background:rgba(37,99,235,.10);border-color:rgba(37,99,235,.25);color:#1d4ed8}
+    a.dark{background:#0b1220;border-color:#0b1220;color:#fff}
+    a.back{color:var(--accent);border-color:rgba(37,99,235,.25)}
+    @media(max-width:820px){.box{grid-column:span 12}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="muted">Talaba: <b>{{ student_fullname }}</b></div>
+
+      <h1 style="margin:10px 0 6px;">{{ book.title }}</h1>
+      <p class="muted" style="margin:0 0 8px;">
+        {% if book.author %}<b>Muallif:</b> {{ book.author }}{% endif %}
+        {% if book.year %} • <b>Yil:</b> {{ book.year }}{% endif %}
+        {% if book.genre %} • <b>Janr:</b> {{ book.genre }}{% endif %}
+      </p>
+
+      <div class="meta">
+        <div class="box">
+          <p class="k">Qisqa sharh</p>
+          <p class="v" style="font-weight:500;margin:0">{{ book.short_desc }}</p>
+        </div>
+        <div class="box">
+          <p class="k">Fayl holati</p>
+          <p class="v">
+            {% if book.pdf_file %}PDF mavjud ✅{% else %}PDF yo‘q (keyin yuklanadi){% endif %}
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <h3 style="margin:0 0 8px;">Batafsil sharh</h3>
+        <p class="muted" style="margin:0;white-space:pre-line;">{{ book.full_desc }}</p>
+      </div>
+
+      <div class="btns">
+        {% if book.pdf_file %}
+          <a class="btn dark" href="{{ book.pdf_file.url }}" download>⬇️ Kitobni yuklab olish (PDF)</a>
+          <a class="btn primary" href="{{ book.pdf_file.url }}" target="_blank">👁️ PDF’ni ko‘rish</a>
+        {% endif %}
+        <a class="btn back" href="{% url 'home' %}">← Katalogga qaytish</a>
+      </div>
+
+      <p class="muted" style="margin-top:14px;font-size:12px;">
+        Eslatma: Yuklab olish faqat siz joylagan (ruxsatli) fayllar uchun.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
