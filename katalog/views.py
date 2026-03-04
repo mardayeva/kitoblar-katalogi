@@ -44,13 +44,13 @@ BOOKS = [
 def home(request):
     books = Book.objects.order_by("-created_at")
     return render(request, "katalog/home.html", {
-        "student_fullname": "FAMILIYA ISM",
+        "student_fullname": "Mordayeva Dilnura",
         "books": books
     })
 
 def book_detail(request, slug):
     book = get_object_or_404(Book, slug=slug)
     return render(request, "katalog/book_detail.html", {
-        "student_fullname": "FAMILIYA ISM",
+        "student_fullname": "Mordayeva Dilnura",
         "book": book
     })
