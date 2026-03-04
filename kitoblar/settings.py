@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-qu3yji6j_#jpcfh5_u$8(hgfjl$q*uawxq0m37(gl+$kx+&m*p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kitoblar-katalogi-3.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
