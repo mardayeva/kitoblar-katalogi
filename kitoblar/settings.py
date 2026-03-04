@@ -27,7 +27,12 @@ SECRET_KEY = 'django-insecure-qu3yji6j_#jpcfh5_u$8(hgfjl$q*uawxq0m37(gl+$kx+&m*p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://mardayeva.onrender.com/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    "mardayeva.onrender.com",
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -68,6 +73,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://mardayeva.onrender.com",
+    "https://*.onrender.com",
 ]
 
 WSGI_APPLICATION = 'kitoblar.wsgi.application'
@@ -123,3 +133,4 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
